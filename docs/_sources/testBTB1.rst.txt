@@ -1,0 +1,7 @@
+testBTB1 module
+===============
+
+.. automodule:: testBTB1
+   :members:
+   :undoc-members:
+   :show-inheritance:
