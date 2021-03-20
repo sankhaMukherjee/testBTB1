@@ -6,6 +6,7 @@
         "outFigure": "../results/bayesOpt.png",
 
         "numIters": 100,
+        "length_scale": 0.003,
 
         "hyperParams":{
 

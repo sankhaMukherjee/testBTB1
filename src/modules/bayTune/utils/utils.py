@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model    import SGDClassifier
 
 from btb.tuning import Tunable
-from btb.tuning.tuners import GPTuner
+from btb.tuning.tuners import GPTuner, GCPTuner, UniformTuner, GPEiTuner
 
 import matplotlib.pyplot as plt
 
@@ -86,7 +86,7 @@ def optimize(logger):
 
     try:
         # Turn off warnings if it gets annoying ...
-        warnings.filterwarnings('ignore')
+        # warnings.filterwarnings('ignore')
 
         ##########################################################
         # Generate the dataset
@@ -101,7 +101,8 @@ def optimize(logger):
         # Generate the tuneable and the tuners
         ##########################################################
         tunable = Tunable.from_dict( configM['hyperParams'] )
-        tuner = GPTuner(tunable)
+        tuner = GPEiTuner(tunable, length_scale= configM['length_scale'] )
+        # tuner = UniformTuner(tunable )
 
         ##########################################################
         # Optimize the hyperparameters
@@ -139,7 +140,9 @@ def optimize(logger):
         plt.ylim([0, 1])
         plt.xlabel('Iterations')
         plt.ylabel('Score')
+
         plt.savefig( configM['outFigure'] )
+        # plt.savefig( configM['outFigure'][:-4] + f"_{configM['length_scale']}.png" )
 
         return best_params
 
