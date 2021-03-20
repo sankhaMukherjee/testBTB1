@@ -8,7 +8,7 @@
     }, {
         "moduleName": "bayTune",
         "path": "modules/bayTune/bayTune.py",
-        "execute": false,
+        "execute": true,
         "description": "a simple example module",
         "owner": ""
     }, {
